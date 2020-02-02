@@ -3,6 +3,10 @@ RUN apk add --no-cache ca-certificates git
 
 WORKDIR /app
 
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
 COPY . .
 RUN go build -o /productcatalogservice .
 
